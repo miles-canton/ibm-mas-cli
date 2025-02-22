@@ -519,6 +519,15 @@ function mirror_to_registry() {
   export REGISTRY_USERNAME
   export REGISTRY_PASSWORD
 
+  # Set image Arch
+  if [[ $MAS_CATALOG_VERSION == *"amd64"* ]]
+  then
+      export MIRROR_SINGLE_ARCH="amd64"
+  elif [[ $MAS_CATALOG_VERSION == *"s390x"* ]]
+  then
+      export MIRROR_SINGLE_ARCH="s390x"
+  fi
+
   # Dependency control
   export MIRROR_CATALOG
   export MIRROR_COMMONSERVICES
